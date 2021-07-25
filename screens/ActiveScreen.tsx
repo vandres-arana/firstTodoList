@@ -32,11 +32,11 @@ export default function TabOneScreen() {
           <TodoItem
             key={data.index}
             title={data.item.name}
-            createdAt={new Date(data.item.date).getUTCDate()}
+            createdAt={new Date(data.item.date).getTime()}
           />
         )}
         renderHiddenItem={(data, rowMap) => (
-          <TodoAction />
+          <TodoAction key={data.index} />
         )}
         leftOpenValue={75}
         rightOpenValue={-90}
