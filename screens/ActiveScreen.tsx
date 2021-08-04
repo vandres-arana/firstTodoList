@@ -1,42 +1,39 @@
 import * as React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import TextInput from '../components/TextInput';
 import TodoItem from '../components/TodoItem';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import TodoAction from '../components/TodoAction';
 
+import { RootState } from '../store';
+import { addTask } from '../store/TodoSlice';
+
 export default function TabOneScreen() {
-  const todoList = [{
-    name: 'Netflix and Chill',
-    date: '7/25/2021 9:16',
-  }, {
-    name: 'Write Test Casses',
-    date: '7/25/2021 8:00',
-  }, {
-    name: 'Get Wine',
-    date: '7/25/2021 16:00'
-  },]
+  const dispatch = useDispatch();
+  const todoList = useSelector((state: RootState) => state.tasks.tasks);
 
   return (
     <View style={styles.container}>
       <TextInput
         onSubmit={(e) => {
-          alert(e.nativeEvent.text)
+          dispatch(addTask(e.nativeEvent.text))
         }}
       />
 
       <SwipeListView
         data={todoList}
+        keyExtractor={(item, index) => item.id!.toString()}
         renderItem={(data, rowMap) => (
           <TodoItem
-            key={data.index}
             title={data.item.name}
-            createdAt={new Date(data.item.date).getTime()}
+            createdAt={new Date(data.item.createdAt).getTime()}
           />
         )}
         renderHiddenItem={(data, rowMap) => (
-          <TodoAction key={data.index} />
+          <TodoAction key={data.item.id?.toString()} />
         )}
         leftOpenValue={75}
         rightOpenValue={-90}
