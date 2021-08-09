@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import DataException from '../exceptions/data-exception';
 
 type Task = {
   id?: number,
@@ -41,6 +42,9 @@ const todoSlice = createSlice({
         name: action.payload,
         createdAt: (new Date()).toString(),
       };
+
+      // throw new DataException('Error with new Task');
+      throw 'Unkown exception';
 
       state.tasks.push(newTask);
     },

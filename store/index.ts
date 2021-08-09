@@ -1,8 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
+import errorHandler from '../middlewares/error-management';
+import logger from '../middlewares/logger';
 
 import tasksReducer from './TodoSlice';
 
-const middlewares = [];
+const middlewares = [
+  logger,
+  errorHandler,
+];
 
 if (__DEV__) {
   const createDebugger = require('redux-flipper').default;

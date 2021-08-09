@@ -19,7 +19,7 @@ export default function TabOneScreen() {
     <View style={styles.container}>
       <TextInput
         onSubmit={(e) => {
-          dispatch(addTask(e.nativeEvent.text))
+          dispatch(addTask(e.nativeEvent.text));
         }}
       />
 
