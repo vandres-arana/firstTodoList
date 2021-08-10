@@ -2,16 +2,25 @@ import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import Colors from '../constants/Colors'
 
-type TodoActionProps = {
+import { useDispatch } from 'react-redux';
+import { markAsCompleted } from '../store/TodoSlice';
 
+type TodoActionProps = {
+  id: number;
 }
 
 const TodoAction: React.FC<TodoActionProps> = ({
-
+  id,
 }) => {
+  const dispatch = useDispatch();
+
+  const handleMarkAsCompleted = () => {
+    dispatch(markAsCompleted(id))
+  }
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.action}>
+      <TouchableOpacity style={styles.action} onPress={handleMarkAsCompleted}>
         <Text style={styles.text} numberOfLines={2}>
           Mark as Completed
         </Text>

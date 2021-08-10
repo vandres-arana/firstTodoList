@@ -1,12 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
+import thunk from 'redux-thunk'; 
+
 import errorHandler from '../middlewares/error-management';
 import logger from '../middlewares/logger';
 
 import tasksReducer from './TodoSlice';
 
 const middlewares = [
-  logger,
-  errorHandler,
+  // logger,
+  // errorHandler,
+  thunk,
 ];
 
 if (__DEV__) {

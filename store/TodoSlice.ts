@@ -1,18 +1,18 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import DataException from '../exceptions/data-exception';
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 
-type Task = {
-  id?: number,
-  name: string;
-  createdAt: number | string;
-  completed?: boolean;
-}
+import { RootState } from '.';
+import Task from '../models/task';
+import { createTask } from './TodoApi';
+
+export const createTaskAsync = createAsyncThunk('tasks/createTask', (nameTask: string) => createTask(nameTask));
 
 type InitialStateProps = {
+  loading: boolean;
   tasks: Task[];
 }
 
 const initialState: InitialStateProps = {
+  loading: false,
   tasks: [{
     id: 1,
     name: 'Netflix and Chill',
@@ -36,18 +36,6 @@ const todoSlice = createSlice({
   name: 'tasks',
   initialState,
   reducers: {
-    addTask(state, action: PayloadAction<string>) {
-      const newTask: Task = {
-        id: Date.now(),
-        name: action.payload,
-        createdAt: (new Date()).toString(),
-      };
-
-      // throw new DataException('Error with new Task');
-      throw 'Unkown exception';
-
-      state.tasks.push(newTask);
-    },
     markAsCompleted(state, action: PayloadAction<number>) {
       const foundIndex = state.tasks
         .findIndex(task => task.id === action.payload);
@@ -64,8 +52,22 @@ const todoSlice = createSlice({
       state.tasks = updatedTasks;
     }
   },
+  extraReducers: builder => {
+    builder.addCase(createTaskAsync.pending, (state) => {
+      state.loading = true;
+    });
+
+    builder.addCase(createTaskAsync.fulfilled, (state, action: PayloadAction<Task>) => {
+      state.loading = false;
+      state.tasks.push(action.payload);
+    })
+  }
 })
 
-export const { addTask } = todoSlice.actions;
+export const { markAsCompleted } = todoSlice.actions;
 
 export default todoSlice.reducer;
+
+export const selectPendingTasks = (state: RootState) => state.tasks.tasks.filter(task => !task.completed)
+
+export const selectPending = (state: RootState) => state.tasks.loading;
