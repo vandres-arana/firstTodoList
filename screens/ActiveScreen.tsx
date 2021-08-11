@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, ActivityIndicator, Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
 import TextInput from '../components/TextInput';
@@ -7,12 +7,13 @@ import TodoItem from '../components/TodoItem';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import TodoAction from '../components/TodoAction';
 
-import { createTaskAsync, selectPendingTasks, selectPending } from '../store/TodoSlice';
+import { createTaskAsync, selectPendingTasks, selectPending, selectMessage } from '../store/TodoSlice';
 
 export default function TabOneScreen() {
   const dispatch = useDispatch();
   const todoList = useSelector(selectPendingTasks);
-  const loading = useSelector(selectPending)
+  const loading = useSelector(selectPending);
+  const message = useSelector(selectMessage)
 
   const handleNewTask = async (text: string) => {
     dispatch(createTaskAsync(text))
@@ -24,12 +25,17 @@ export default function TabOneScreen() {
         onSubmit={(e) => handleNewTask(e.nativeEvent.text)}
       />
 
+      <Text style={styles.errorMessage}>
+        {message}
+      </Text>
+
       <SwipeListView
         data={todoList}
         keyExtractor={(item, index) => item.id!.toString()}
         renderItem={(data, rowMap) => (
           <TodoItem
             title={data.item.name}
+            category={data.item.categoryName}
             createdAt={new Date(data.item.createdAt).getTime()}
           />
         )}
@@ -59,4 +65,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  errorMessage: {
+    color: 'red',
+  }
 });

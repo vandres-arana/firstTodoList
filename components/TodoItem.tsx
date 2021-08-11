@@ -6,11 +6,13 @@ import Colors from '../constants/Colors';
 
 type TodoItemProps = {
   title: string;
+  category: string;
   createdAt: number;
 }
 
 const TodoItem: React.FC<TodoItemProps> = ({
   title,
+  category,
   createdAt,
 }) => {
   const timeNow = moment(createdAt).fromNow();
@@ -25,6 +27,10 @@ const TodoItem: React.FC<TodoItemProps> = ({
       <View style={styles.detail}>
         <Text style={styles.title}>
           {title}
+        </Text>
+
+        <Text style={styles.subtitle}>
+          {category}
         </Text>
 
         <Text style={styles.date}>
@@ -67,6 +73,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     color: '#f2f2f2',
+  },
+  subtitle: {
+    fontSize: 12,
+    color: 'rgba(255, 255, 255, 0.6)',
   },
   date: {
     color: 'rgba(255, 255, 255, 0.6)',

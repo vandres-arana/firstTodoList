@@ -5,10 +5,11 @@ import errorHandler from '../middlewares/error-management';
 import logger from '../middlewares/logger';
 
 import tasksReducer from './TodoSlice';
+import categoriesReducer from './CategorySlice';
 
 const middlewares = [
-  // logger,
-  // errorHandler,
+  logger,
+  errorHandler,
   thunk,
 ];
 
@@ -20,6 +21,7 @@ if (__DEV__) {
 const store = configureStore({
   reducer: {
     tasks: tasksReducer,
+    categories: categoriesReducer,
   },
   middleware: middlewares,
 })
