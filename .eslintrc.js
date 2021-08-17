@@ -18,7 +18,8 @@ module.exports = {
   'plugins': [
     'react',
     'react-hooks',
-    '@typescript-eslint'
+    '@typescript-eslint',
+    'prettier',
   ],
   'rules': {
     'indent': [
@@ -38,6 +39,11 @@ module.exports = {
       'always'
     ],
     'react/prop-types': [0],
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-explicit-any': [0],
+    'no-unsafe-any': false,
+    'ignore-rest-args': true,
+    'prettier/prettier': 'error',
   },
   settings: {
     react: {

@@ -7,6 +7,13 @@ import logger from '../middlewares/logger';
 import tasksReducer from './TodoSlice';
 import categoriesReducer from './CategorySlice';
 
+const rootReducer = {
+  tasks: tasksReducer,
+  categories: categoriesReducer,
+};
+
+export type RootState = typeof rootReducer;
+
 const middlewares = [
   logger,
   errorHandler,
@@ -19,14 +26,9 @@ if (__DEV__) {
 }
 
 const store = configureStore({
-  reducer: {
-    tasks: tasksReducer,
-    categories: categoriesReducer,
-  },
-  middleware: middlewares,
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
 });
 
-
-export type RootState = ReturnType<typeof store.getState>
 
 export default store;

@@ -1,7 +1,5 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 
-import { RootState } from '.';
-
 const initialState = {
   data: [{
     id: 1,
