@@ -24,7 +24,7 @@ const store = configureStore({
     categories: categoriesReducer,
   },
   middleware: middlewares,
-})
+});
 
 
 export type RootState = ReturnType<typeof store.getState>

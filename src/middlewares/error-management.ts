@@ -13,6 +13,6 @@ const errorHandler = (store: any) => (next: any) => (action: any) => {
 
     throw error;
   }
-}
+};
 
 export default errorHandler;

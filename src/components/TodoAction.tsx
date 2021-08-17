@@ -1,6 +1,6 @@
-import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
-import Colors from '../constants/Colors'
+import React from 'react';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import Colors from '../constants/Colors';
 
 import { useDispatch } from 'react-redux';
 import { markAsCompleted } from '../store/TodoSlice';
@@ -15,8 +15,8 @@ const TodoAction: React.FC<TodoActionProps> = ({
   const dispatch = useDispatch();
 
   const handleMarkAsCompleted = () => {
-    dispatch(markAsCompleted(id))
-  }
+    dispatch(markAsCompleted(id));
+  };
 
   return (
     <View style={styles.container}>
@@ -26,10 +26,10 @@ const TodoAction: React.FC<TodoActionProps> = ({
         </Text>
       </TouchableOpacity>
     </View>
-  )
-}
+  );
+};
 
-export default TodoAction
+export default TodoAction;
 
 const styles = StyleSheet.create({
   container: {
@@ -47,4 +47,4 @@ const styles = StyleSheet.create({
     width: 80,
     textAlign: 'center',
   },
-})
+});

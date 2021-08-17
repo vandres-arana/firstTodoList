@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 import {
   StyleSheet,
   View,
   TextInput as Input,
   NativeSyntheticEvent,
   TextInputSubmitEditingEventData
-} from 'react-native'
+} from 'react-native';
 
 type TextInputProps = {
   onSubmit: (e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void;
@@ -23,10 +23,10 @@ const TextInput: React.FC<TextInputProps> = ({
         onSubmitEditing={onSubmit}
       />
     </View>
-  )
-}
+  );
+};
 
-export default TextInput
+export default TextInput;
 
 const styles = StyleSheet.create({
   container: {
@@ -39,4 +39,4 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     padding: 8,
   },
-})
+});

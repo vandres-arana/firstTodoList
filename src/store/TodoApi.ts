@@ -10,8 +10,8 @@ export const createTask = (task: string): Promise<Task> => {
         createdAt: (new Date()).toString(),
       };
       
-      reject('Any Error!')
+      reject('Any Error!');
       // resolve(newTask)
     }, 1000);
   });
-}
+};

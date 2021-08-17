@@ -13,11 +13,11 @@ export default function TabOneScreen() {
   const dispatch = useDispatch();
   const todoList = useSelector(selectPendingTasks);
   const loading = useSelector(selectPending);
-  const message = useSelector(selectMessage)
+  const message = useSelector(selectMessage);
 
   const handleNewTask = async (text: string) => {
-    dispatch(createTaskAsync(text))
-  }
+    dispatch(createTaskAsync(text));
+  };
 
   return (
     <View style={styles.container}>
@@ -31,7 +31,7 @@ export default function TabOneScreen() {
 
       <SwipeListView
         data={todoList}
-        keyExtractor={(item, index) => item.id!.toString()}
+        keyExtractor={(item, index) => item.id.toString()}
         renderItem={(data, rowMap) => (
           <TodoItem
             title={data.item.name}
@@ -40,7 +40,7 @@ export default function TabOneScreen() {
           />
         )}
         renderHiddenItem={(data, rowMap) => (
-          <TodoAction key={data.item.id?.toString()} id={data.item.id!} />
+          <TodoAction key={data.item.id?.toString()} id={data.item.id} />
         )}
         leftOpenValue={75}
         rightOpenValue={-90}

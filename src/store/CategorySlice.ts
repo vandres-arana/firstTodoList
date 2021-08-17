@@ -21,6 +21,6 @@ const categorySlice = createSlice({
   reducers: {
 
   },
-})
+});
 
 export default categorySlice.reducer;

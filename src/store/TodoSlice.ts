@@ -48,7 +48,7 @@ const todoSlice = createSlice({
 
       state.tasks[foundIndex].completed = true;
     },
-    deleteTask(state, action: PayloadAction<Number>) {
+    deleteTask(state, action: PayloadAction<number>) {
       const foundIndex = state.tasks
         .findIndex(task => task.id === action.payload);
 
@@ -67,14 +67,14 @@ const todoSlice = createSlice({
       state.loading = false;
       const { error } = action;
       state.message = error.message;
-    })
+    });
 
     builder.addCase(createTaskAsync.fulfilled, (state, action: PayloadAction<Task>) => {
       state.loading = false;
       state.tasks.push(action.payload);
-    })
+    });
   }
-})
+});
 
 export const { markAsCompleted } = todoSlice.actions;
 
@@ -93,10 +93,10 @@ export const selectPendingTasks = (state: RootState) => {
       };
 
       return taskWithCategory;
-    })
+    });
   
   return activeTasks;
-}
+};
 
 export const selectPending = (state: RootState) => state.tasks.loading;
 
