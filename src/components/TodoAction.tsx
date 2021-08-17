@@ -1,17 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import Colors from '../constants/Colors';
 
-import { useDispatch } from 'react-redux';
-import { markAsCompleted } from '../store/TodoSlice';
+import {useDispatch} from 'react-redux';
+import {markAsCompleted} from '../store/TodoSlice';
 
 type TodoActionProps = {
   id: number;
-}
+};
 
-const TodoAction: React.FC<TodoActionProps> = ({
-  id,
-}) => {
+const TodoAction: React.FC<TodoActionProps> = ({id}) => {
   const dispatch = useDispatch();
 
   const handleMarkAsCompleted = () => {

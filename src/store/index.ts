@@ -1,5 +1,5 @@
-import { configureStore } from '@reduxjs/toolkit';
-import thunk from 'redux-thunk'; 
+import {configureStore} from '@reduxjs/toolkit';
+import thunk from 'redux-thunk';
 
 import errorHandler from '../middlewares/error-management';
 import logger from '../middlewares/logger';
@@ -14,11 +14,7 @@ const rootReducer = {
 
 export type RootState = typeof rootReducer;
 
-const middlewares = [
-  logger,
-  errorHandler,
-  thunk,
-];
+const middlewares = [logger, errorHandler, thunk];
 
 if (__DEV__) {
   const createDebugger = require('redux-flipper').default;
@@ -29,6 +25,5 @@ const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
 });
-
 
 export default store;

@@ -7,9 +7,9 @@ export const createTask = (task: string): Promise<Task> => {
       const newTask: Task = {
         id: Date.now(),
         name: task,
-        createdAt: (new Date()).toString(),
+        createdAt: new Date().toString(),
       };
-      
+
       reject('Any Error!');
       // resolve(newTask)
     }, 1000);

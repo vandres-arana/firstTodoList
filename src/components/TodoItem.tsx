@@ -1,20 +1,16 @@
 import moment from 'moment';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
 import Colors from '../constants/Colors';
 
 type TodoItemProps = {
   title: string;
-  category: string
+  category: string;
   createdAt: number;
-}
+};
 
-const TodoItem: React.FC<TodoItemProps> = ({
-  title,
-  category,
-  createdAt,
-}) => {
+const TodoItem: React.FC<TodoItemProps> = ({title, category, createdAt}) => {
   const timeNow = moment(createdAt).fromNow();
 
   return (
@@ -25,17 +21,11 @@ const TodoItem: React.FC<TodoItemProps> = ({
       </View>
 
       <View style={styles.detail}>
-        <Text style={styles.title}>
-          {title}
-        </Text>
+        <Text style={styles.title}>{title}</Text>
 
-        <Text style={styles.subtitle}>
-          {category}
-        </Text>
+        <Text style={styles.subtitle}>{category}</Text>
 
-        <Text style={styles.date}>
-          {timeNow}
-        </Text>
+        <Text style={styles.date}>{timeNow}</Text>
       </View>
     </View>
   );

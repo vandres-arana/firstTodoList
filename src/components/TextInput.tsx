@@ -4,16 +4,14 @@ import {
   View,
   TextInput as Input,
   NativeSyntheticEvent,
-  TextInputSubmitEditingEventData
+  TextInputSubmitEditingEventData,
 } from 'react-native';
 
 type TextInputProps = {
   onSubmit: (e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void;
-}
+};
 
-const TextInput: React.FC<TextInputProps> = ({
-  onSubmit
-}) => {
+const TextInput: React.FC<TextInputProps> = ({onSubmit}) => {
   return (
     <View style={styles.container}>
       <Input

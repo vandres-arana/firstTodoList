@@ -9,7 +9,7 @@
     "lint": "eslint --ext .tsx --ext .ts src",
     "lint:fix": "eslint --ext .tsx --ext .ts src --fix",
     "format": "prettier --check src",
-    "fotmat:fix": "prettier --write src",
+    "format:fix": "prettier --write src"
   },
   "jest": {
     "preset": "jest-expo"

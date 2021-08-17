@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, ActivityIndicator, Text } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
+import React, {useState} from 'react';
+import {StyleSheet, View, ActivityIndicator, Text} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
 
 import TextInput from '../components/TextInput';
 import TodoItem from '../components/TodoItem';
-import { SwipeListView } from 'react-native-swipe-list-view';
+import {SwipeListView} from 'react-native-swipe-list-view';
 import TodoAction from '../components/TodoAction';
 
-import { createTaskAsync, selectPendingTasks, selectPending, selectMessage } from '../store/TodoSlice';
+import {
+  createTaskAsync,
+  selectPendingTasks,
+  selectPending,
+  selectMessage,
+} from '../store/TodoSlice';
 
 export default function TabOneScreen() {
   const dispatch = useDispatch();
@@ -21,13 +26,9 @@ export default function TabOneScreen() {
 
   return (
     <View style={styles.container}>
-      <TextInput
-        onSubmit={(e) => handleNewTask(e.nativeEvent.text)}
-      />
+      <TextInput onSubmit={(e) => handleNewTask(e.nativeEvent.text)} />
 
-      <Text style={styles.errorMessage}>
-        {message}
-      </Text>
+      <Text style={styles.errorMessage}>{message}</Text>
 
       <SwipeListView
         data={todoList}
@@ -46,9 +47,11 @@ export default function TabOneScreen() {
         rightOpenValue={-90}
       />
 
-      {loading && <View style={styles.loading}>
-        <ActivityIndicator size="small"  />
-      </View>}
+      {loading && (
+        <View style={styles.loading}>
+          <ActivityIndicator size="small" />
+        </View>
+      )}
     </View>
   );
 }
@@ -67,5 +70,5 @@ const styles = StyleSheet.create({
   },
   errorMessage: {
     color: 'red',
-  }
+  },
 });

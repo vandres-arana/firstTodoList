@@ -5,7 +5,7 @@ const errorHandler = (store: any) => (next: any) => (action: any) => {
     return next(action);
   } catch (error) {
     console.error(`[Store] - Exception on ${JSON.stringify(action)}`, error);
-    
+
     if (error instanceof DataException) {
       alert('Please, Review your data');
       return;
