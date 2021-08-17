@@ -6,7 +6,7 @@ import Colors from '../constants/Colors';
 
 type TodoItemProps = {
   title: string;
-  category: string;
+  category: string
   createdAt: number;
 }
 
@@ -38,10 +38,10 @@ const TodoItem: React.FC<TodoItemProps> = ({
         </Text>
       </View>
     </View>
-  )
-}
+  );
+};
 
-export default TodoItem
+export default TodoItem;
 
 const styles = StyleSheet.create({
   todo: {
@@ -82,4 +82,4 @@ const styles = StyleSheet.create({
     color: 'rgba(255, 255, 255, 0.6)',
     fontSize: 12,
   },
-})
+});
