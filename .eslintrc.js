@@ -5,11 +5,7 @@ module.exports = {
     jest: true,
   },
   'extends': [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    '@react-native-community/eslint-config',
   ],
   'parser': '@typescript-eslint/parser',
   'parserOptions': {
@@ -44,6 +40,8 @@ module.exports = {
     'no-unsafe-any': 0,
     'ignore-rest-args': 0,
     'prettier/prettier': 'error',
+    'no-unused-vars': 'off',
+    "@typescript-eslint/no-unused-vars": [1]
   },
   settings: {
     react: {

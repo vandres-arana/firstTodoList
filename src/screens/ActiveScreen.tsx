@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, View, ActivityIndicator, Text} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 
@@ -33,14 +33,14 @@ export default function TabOneScreen() {
       <SwipeListView
         data={todoList}
         keyExtractor={(item, index) => item.id.toString()}
-        renderItem={(data, rowMap) => (
+        renderItem={(data: any, rowMap) => (
           <TodoItem
             title={data.item.name}
             category={data.item.categoryName}
             createdAt={new Date(data.item.createdAt).getTime()}
           />
         )}
-        renderHiddenItem={(data, rowMap) => (
+        renderHiddenItem={(data: any, rowMap) => (
           <TodoAction key={data.item.id?.toString()} id={data.item.id} />
         )}
         leftOpenValue={75}
