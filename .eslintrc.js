@@ -28,7 +28,7 @@ module.exports = {
     ],
     'linebreak-style': [
       'error',
-      'windows'
+      'unix'
     ],
     'quotes': [
       'error',
@@ -41,8 +41,8 @@ module.exports = {
     'react/prop-types': [0],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': [0],
-    'no-unsafe-any': false,
-    'ignore-rest-args': true,
+    'no-unsafe-any': 0,
+    'ignore-rest-args': 0,
     'prettier/prettier': 'error',
   },
   settings: {
