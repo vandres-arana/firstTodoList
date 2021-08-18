@@ -1,39 +1,20 @@
 module.exports = {
-  'env': {
+  env: {
     es6: true,
     node: true,
     jest: true,
   },
-  'extends': [
-    '@react-native-community/eslint-config',
-  ],
-  'parser': '@typescript-eslint/parser',
-  'parserOptions': {
+  extends: ['@react-native-community/eslint-config'],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
     project: './tsconfig.json',
   },
-  'plugins': [
-    'react',
-    'react-hooks',
-    '@typescript-eslint',
-    'prettier',
-  ],
-  'rules': {
-    'indent': [
-      'error',
-      2
-    ],
-    'linebreak-style': [
-      'error',
-      'unix'
-    ],
-    'quotes': [
-      'error',
-      'single'
-    ],
-    'semi': [
-      'error',
-      'always'
-    ],
+  plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
+  rules: {
+    indent: ['error', 2],
+    'linebreak-style': ['error', 'unix'],
+    quotes: ['error', 'single'],
+    semi: ['error', 'always'],
     'react/prop-types': [0],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': [0],
@@ -41,7 +22,7 @@ module.exports = {
     'ignore-rest-args': 0,
     'prettier/prettier': 'error',
     'no-unused-vars': 'off',
-    "@typescript-eslint/no-unused-vars": [1]
+    '@typescript-eslint/no-unused-vars': [1],
   },
   settings: {
     react: {
