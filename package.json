@@ -9,7 +9,8 @@
     "lint": "eslint --ext .tsx --ext .ts src",
     "lint:fix": "eslint --ext .tsx --ext .ts src --fix",
     "format": "prettier --check src",
-    "format:fix": "prettier --write src"
+    "format:fix": "prettier --write src",
+    "hello": "echo 'Hello World'"
   },
   "jest": {
     "preset": "jest-expo"
@@ -58,9 +59,16 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.1",
     "jest-expo": "~41.0.0-beta.0",
+    "lint-staged": "^11.1.2",
     "prettier": "^2.3.2",
     "typescript": "~4.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run hello"
+    }
   },
   "private": true,
   "name": "Todoist",
